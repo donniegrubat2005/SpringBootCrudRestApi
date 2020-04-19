@@ -1,9 +1,6 @@
 package com.donniegrubat2005.SpringBootCrudRestApi.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +19,7 @@ import com.donniegrubat2005.SpringBootCrudRestApi.services.EmployeeService;
 @RestController
 @RequestMapping("/api")
 
-public class EmployeeResourceController {
+public class EmployeeController {
 
 	@Autowired
 	private EmployeeService empservice;
@@ -30,11 +27,10 @@ public class EmployeeResourceController {
 	
 	@GetMapping(path="/employees")
 	public List<Employee> getAllEmployees() 
-	{
-		 List<Employee> employees = new ArrayList<>();
-		 empservice.listEmployee().forEach(employees::add);
+	{		
+		 return empservice.listEmployee();
 		 
-		 return employees;
+		 
 	}
 	
 	@PostMapping(path = "/employees")
